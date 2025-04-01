@@ -1,2 +1,2 @@
-# excel-translator-deployment
+# Excel translator!
 It translates excels!
