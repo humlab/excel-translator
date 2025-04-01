@@ -1,0 +1,20 @@
+services:
+  client:
+    build:
+      context: ./excel-translator-client/docker
+      args:
+        HTTP_BASIC_AUTH_USER: ${HTTP_BASIC_AUTH_USER}
+        HTTP_BASIC_AUTH_PASSWORD: ${HTTP_BASIC_AUTH_PASSWORD}
+    container_name: excel-translator-client
+    ports:
+      - "8080:80"
+    #volumes:
+    #  - ./excel-translator-client/dist:/usr/share/nginx/html
+  server:
+    build: ./excel-translator-server/docker
+    container_name: excel-translator-server
+    ports:
+      - "5000:5000"
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      PROMPT: ${PROMPT}
